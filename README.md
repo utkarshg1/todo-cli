@@ -26,25 +26,15 @@ This tool allows you to manage your tasks directly from the terminal.
 
 * Rust toolchain (install via [rustup](https://rustup.rs/))
 
-### Build from source
+### Build and install
 
 ```bash
 git clone https://github.com/yourusername/todo-cli.git
 cd todo-cli
-cargo build --release
+cargo install --path .
 ```
 
-The compiled binary will be available at:
-
-```
-target/release/todo
-```
-
-You can move it to your PATH, e.g.:
-
-```bash
-mv target/release/todo ~/.local/bin/
-```
+This will install the `todo` binary into `~/.cargo/bin/`, which should already be in your PATH.
 
 ---
 
