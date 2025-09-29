@@ -29,7 +29,7 @@ This tool allows you to manage your tasks directly from the terminal.
 ### Build and install
 
 ```bash
-git clone https://github.com/yourusername/todo-cli.git
+git clone https://github.com/utkarshg1/todo-cli.git
 cd todo-cli
 cargo install --path .
 ```
