@@ -1,6 +1,5 @@
 use clap::{Parser, Subcommand};
 use rusqlite::{Connection, Result, params};
-use std::env;
 use std::path::PathBuf;
 
 /// A simple CLI todo application
@@ -160,8 +159,11 @@ fn update_todo(conn: &Connection, id: i64, description: &str) -> Result<()> {
 }
 
 fn get_default_db_path() -> PathBuf {
-    let home = env::var("HOME").unwrap_or_else(|_| ".".to_string());
-    let data_dir = PathBuf::from(home).join(".local/share/todo-cli");
+    // Try platform-specific data directory
+    let base_dir = dirs_next::data_dir()
+        .unwrap_or_else(|| PathBuf::from("."));
+    
+    let data_dir = base_dir.join("todo-cli");
 
     // Create the directory if it doesn't exist
     std::fs::create_dir_all(&data_dir).ok();
